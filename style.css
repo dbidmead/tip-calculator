@@ -17,6 +17,10 @@
     box-sizing: border-box;
 }
 
+*:focus {
+    outline-color: var(--bluegreen);
+}
+
 body {
     width: 100vw;
     height: auto;
@@ -91,6 +95,12 @@ form>div {
     border: none;
     border-radius: 5px;
     transition: all 0.2s ease;
+    cursor: pointer;
+}
+
+.tip-btn:hover {
+    background-color: var(--bluegreen);
+    color: var(--dark);
 }
 
 .active {
@@ -126,13 +136,17 @@ input {
     text-align: right;
     color: var(--dark);
     width: 100%;
+    cursor: pointer;
+}
+
+input::placeholder {
+    color: var(--light);
 }
 
 .input-img {
     position: absolute;
     left: 0.7rem;
     bottom: 0.67rem;
-    /* transform: translateY(-50%); */
 }
 
 .output-label {
@@ -162,9 +176,21 @@ input {
     border-radius: 5px;
     color: var(--dark);
     height: 2rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.reset-btn:hover {
+    background-color: var(--pale);
 }
 
 .disabled {
+    background-color: hsl(185, 46%, 28%);
+    cursor: default;
+    pointer-events: none;
+}
+
+.disabled:hover {
     background-color: hsl(185, 46%, 28%);
 }
 
@@ -181,4 +207,68 @@ input {
     color: var(--bluegreen); 
     font-size: inherit;
     text-decoration: none;
+}
+
+@media (min-width: 920px) {
+    body {
+        height: 100vh;
+    }
+
+    .content-wrapper {
+        justify-content: space-evenly;
+    }
+    
+    #logo {
+        margin: 0;
+    }
+    
+    .calculator {
+        max-width: 920px;
+        height: 500px;
+        border-radius: 25px;
+        flex-direction: row;
+        gap: 1.5rem;
+        padding: 1.5rem;
+    }
+    
+    .input-half {
+        height: 100%;
+        width: 100%;
+    }
+
+    form {
+        justify-content: space-evenly;
+        height: 100%;
+    }
+    
+    .tip-grid {
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: repeat(2, 1fr);
+    }
+    
+    .output-half {
+        height: 100%;
+        width: 85%;
+        position: relative;
+    }
+    
+    .display-field {
+        margin-top: 1rem;
+    }
+
+    .display-field>div {
+        font-size: 40px;
+    }
+    
+    .reset-btn {
+        position: absolute;
+        bottom: 1.5rem;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 80%;
+    }
+    
+    .attribution { 
+        background-color: transparent;
+    }
 }
