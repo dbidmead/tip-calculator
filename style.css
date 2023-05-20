@@ -1,0 +1,184 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@700&display=swap');
+
+:root {
+    --bluegreen: hsl(172, 67%, 45%);
+    --dark: hsl(183, 100%, 15%);
+    --medium: hsl(186, 14%, 43%);
+    --light: hsl(184, 14%, 56%);
+    --pale: hsl(185, 41%, 84%);
+    --offwhite: hsl(189, 41%, 97%);
+}
+
+* {
+    font-family: 'Space Mono', monospace;
+    font-size: 24px;
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    width: 100vw;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--pale);
+}
+
+.site-wrapper {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.content-wrapper {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#logo {
+    margin-top: 1.75rem;
+    margin-bottom: 1.75rem;
+}
+
+.calculator {
+    background-color: white;
+    height: 80%;
+    width: 100%;
+    border-radius: 25px 25px 0 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    gap: 0.5rem;
+}
+
+.input-half {
+    width: 80%;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+form>div {
+    position: relative;
+}
+
+.tip-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    gap: 0.5rem;
+}
+
+.tip-btn {
+    background-color: var(--dark);
+    color: var(--offwhite);
+    border: none;
+    border-radius: 5px;
+    transition: all 0.2s ease;
+}
+
+.active {
+    background-color: var(--bluegreen);
+    color: var(--dark);
+}
+
+.output-half {
+    width: 80%;
+    background-color: var(--dark);
+    border-radius: 15px;
+    padding: 1.25rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+label, span {
+    font-size: 16px;
+    color: var(--medium);
+}
+
+p {
+    font-size: 12px;
+    color: var(--medium);
+}
+
+input {
+    border: none;
+    background-color: var(--offwhite);
+    border-radius: 5px;
+    padding: 0.25rem 0.75rem;
+    text-align: right;
+    color: var(--dark);
+    width: 100%;
+}
+
+.input-img {
+    position: absolute;
+    left: 0.7rem;
+    bottom: 0.67rem;
+    /* transform: translateY(-50%); */
+}
+
+.output-label {
+    display: flex;
+    flex-direction: column;
+
+}
+
+.output-label>span {
+    color: var(--offwhite);
+}
+
+.display-field {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.display-field>div {
+    color: var(--bluegreen);
+    font-size: 28px;
+}
+
+.reset-btn {
+    background-color: var(--bluegreen);
+    border: none;
+    border-radius: 5px;
+    color: var(--dark);
+    height: 2rem;
+}
+
+.disabled {
+    background-color: hsl(185, 46%, 28%);
+}
+
+.attribution { 
+    font-size: 11px; 
+    text-align: center; 
+    width: 100%;
+    justify-self: flex-end;
+    background-color: white;
+    padding-top: 1rem;
+}
+
+.attribution a { 
+    color: var(--bluegreen); 
+    font-size: inherit;
+    text-decoration: none;
+}

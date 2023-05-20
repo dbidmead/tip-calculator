@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+  <link rel="stylesheet" href="style.css">
+  
+  <title>Tip Calculator</title>
+</head>
+<body>
+  <div class="site-wrapper">
+    <div class="content-wrapper">
+      <img src="./images/logo.svg" alt="logo" id="logo">
+      <div class="calculator">
+        <div class="input-half">
+          <form>
+            <div class="bill-field">
+              <label for="bill">Bill</label>
+              <input type="text" name="bill" id="bill" placeholder="0">
+              <img src="./images/icon-dollar.svg" alt="$" class="input-img">
+            </div>
+            <div class="tip-field">
+              <span>Select Tip %</span>
+              <div class="tip-grid">
+                <button class="tip-btn">5%</button>
+                <button class="tip-btn">10%</button>
+                <button class="tip-btn active">15%</button>
+                <button class="tip-btn">25%</button>
+                <button class="tip-btn">50%</button>
+                <input type="text" name="custom" id="custom" placeholder="Custom">
+              </div>
+            </div>
+            <div class="ppl-field">
+              <label for="ppl">Number of people</label>
+              <input type="text" name="ppl" id="ppl" placeholder="0">
+              <img src="./images/icon-person.svg" alt="person" class="input-img">
+            </div>
+          </form>
+        </div>
+        <div class="output-half">
+          <div class="display-field">
+            <div class="output-label">
+              <span>Tip Amount</span>
+              <p>/ person</p>
+            </div>
+            <div id="tip-display">$24.07</div>
+          </div>
+          <div class="display-field">
+            <div class="output-label">
+              <span>Total</span>
+              <p>/ person</p>
+            </div>
+            <div id="total-display">$100.17</div>
+          </div>
+          <button class="disabled reset-btn">Reset</button>
+        </div>
+      </div>
+    </div>
+    <div class="attribution">
+      Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
+      Coded by <a href="https://github.com/dbidmead" target="_blank">Drew Bidmead</a>.
+    </div>
+  </div>
+  <script src="./app.js"></script>
+</body>
+</html>
