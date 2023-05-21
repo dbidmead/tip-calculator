@@ -225,12 +225,18 @@ input::placeholder {
     justify-self: flex-end;
     background-color: white;
     padding-top: 1rem;
+    color: var(--dark);
 }
 
 .attribution a { 
     color: var(--bluegreen); 
     font-size: inherit;
     text-decoration: none;
+    transition: all 0.2s ease;
+}
+
+.attribution a:hover {
+    color: var(--dark);
 }
 
 @media (min-width: 920px) {

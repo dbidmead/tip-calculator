@@ -58,11 +58,9 @@ function setDisplays() {
 const isInputValid = (input) => {
     resetBtn.classList.add('disabled');
     input.classList.remove('invalid-input');
-    // input.errorType = 'none';
     input.entered = true;
     if(input.value.length == 0) {
         input.entered = false;
-        // input.errorType = 'empty';
         input.classList.add('invalid-input');
         input.errorDisplay.setAttribute('style', 'opacity: 1');
         input.errorDisplay.textContent = "Can't be empty";
@@ -71,7 +69,6 @@ const isInputValid = (input) => {
     if(input.validationType == 'float') {
         if(!floatRegEx.test(input.value)) {
             input.entered = false;
-            // input.errorType = 'format';
             input.classList.add('invalid-input');
             input.errorDisplay.setAttribute('style', 'opacity: 1');
             input.errorDisplay.textContent = "Invalid Entry"
@@ -81,7 +78,6 @@ const isInputValid = (input) => {
     if(input.validationType == 'int') {
         if(!intRegEx.test(input.value)) {
             input.entered = false;
-            // input.errorType = 'format';
             input.classList.add('invalid-input');
             input.errorDisplay.setAttribute('style', 'opacity: 1');
             input.errorDisplay.textContent = "Invalid Entry"
@@ -89,7 +85,6 @@ const isInputValid = (input) => {
         }
         if(input.value == 0) {
             input.entered = false;
-            // input.errorType = 'zero';
             input.classList.add('invalid-input');
             input.errorDisplay.setAttribute('style', 'opacity: 1');
             input.errorDisplay.textContent = "Can't be zero";
