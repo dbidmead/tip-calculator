@@ -20,6 +20,7 @@
               <label for="bill">Bill</label>
               <input type="text" name="bill" id="bill" placeholder="0">
               <img src="./images/icon-dollar.svg" alt="$" class="input-img">
+              <span class="error-message" id="bill-error-display">Invalid Entry</span>
             </div>
             <div class="tip-field">
               <span>Select Tip %</span>
@@ -31,11 +32,13 @@
                 <button class="tip-btn">50%</button>
                 <input type="text" name="custom" id="custom" placeholder="Custom">
               </div>
+              <span class="error-message" id="tip-error-display">Invalid Entry</span>
             </div>
             <div class="ppl-field">
               <label for="ppl">Number of people</label>
               <input type="text" name="ppl" id="ppl" placeholder="0">
               <img src="./images/icon-person.svg" alt="person" class="input-img">
+              <span class="error-message" id="ppl-error-display">Invalid Entry</span>
             </div>
           </form>
         </div>

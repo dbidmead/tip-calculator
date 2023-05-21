@@ -10,14 +10,19 @@ let tipFactorEntered = false;
 
 const billInput = document.querySelector('#bill');
 billInput.validationType = 'float';
-billInput.entered = false ;
-const tipButtons = document.querySelectorAll('.tip-btn');
+billInput.entered = false;
+billInput.errorDisplay = document.querySelector('#bill-error-display');
+
 const tipInput = document.querySelector('#custom');
 tipInput.validationType = 'float';
-// tipInput.entered = false;
+tipInput.errorDisplay = document.querySelector('#tip-error-display');
+
+const tipButtons = document.querySelectorAll('.tip-btn');
+
 const pplInput = document.querySelector('#ppl');
 pplInput.validationType = 'int';
 pplInput.entered = false;
+pplInput.errorDisplay = document.querySelector('#ppl-error-display');
 
 const tipDisplay = document.querySelector('#tip-display');
 const totalDisplay = document.querySelector('#total-display')
@@ -27,8 +32,6 @@ const resetBtn = document.querySelector('.reset-btn');
 
 const floatRegEx = /^[0-9]+\.?[0-9]?[0-9]?$/; // forces regex to only accept numbers, one decimal, and teminate at most 2 decimals after the decimal
 const intRegEx = /^[0-9]+$/;
-
-
 
 // ---------------FUNCTIONS---------------
 
@@ -42,9 +45,9 @@ function calculateTotalBill() {
 
 function setDisplays() {
     if(
-        isInputValid(billInput) &&
-        isInputValid(pplInput) &&
-        tipFactorEntered
+        tipFactorEntered &&
+        billInput.entered &&
+        pplInput.entered
     ) {
         tipDisplay.textContent = !isNaN(calculateTotalTip()) ? '$' + calculateTotalTip() : '$0';
         totalDisplay.textContent = !isNaN(calculateTotalBill()) ? '$' + calculateTotalBill() : '$0';
@@ -52,30 +55,48 @@ function setDisplays() {
     }
 }
 
-
 const isInputValid = (input) => {
     resetBtn.classList.add('disabled');
-    input.errorType = 'none';
+    input.classList.remove('invalid-input');
+    // input.errorType = 'none';
     input.entered = true;
     if(input.value.length == 0) {
         input.entered = false;
-        input.errorType = 'empty';
+        // input.errorType = 'empty';
+        input.classList.add('invalid-input');
+        input.errorDisplay.setAttribute('style', 'opacity: 1');
+        input.errorDisplay.textContent = "Can't be empty";
         return false;
     };
     if(input.validationType == 'float') {
         if(!floatRegEx.test(input.value)) {
             input.entered = false;
-            input.errorType = 'format';
+            // input.errorType = 'format';
+            input.classList.add('invalid-input');
+            input.errorDisplay.setAttribute('style', 'opacity: 1');
+            input.errorDisplay.textContent = "Invalid Entry"
             return false;
         }
     };
     if(input.validationType == 'int') {
         if(!intRegEx.test(input.value)) {
             input.entered = false;
-            input.errorType = 'format';
+            // input.errorType = 'format';
+            input.classList.add('invalid-input');
+            input.errorDisplay.setAttribute('style', 'opacity: 1');
+            input.errorDisplay.textContent = "Invalid Entry"
+            return false;
+        }
+        if(input.value == 0) {
+            input.entered = false;
+            // input.errorType = 'zero';
+            input.classList.add('invalid-input');
+            input.errorDisplay.setAttribute('style', 'opacity: 1');
+            input.errorDisplay.textContent = "Can't be zero";
             return false;
         }
     };
+    input.errorDisplay.setAttribute('style', 'opacity: 0');
     return true;
 }
 
@@ -83,6 +104,7 @@ const isInputValid = (input) => {
 
 billInput.addEventListener('input', (e) => {
     billValue = e.target.value;
+    isInputValid(e.target);
     setDisplays();
 })
 
@@ -95,6 +117,8 @@ tipButtons.forEach(button => {
         setDisplays();
         e.target.classList.add('active');
         tipInput.value = '';
+        tipInput.classList.remove('invalid-input');
+        tipInput.errorDisplay.setAttribute('style', 'opacity: 0');
     })
 })
 
@@ -107,6 +131,7 @@ tipInput.addEventListener('input', (e) => {
 
 pplInput.addEventListener('input', (e) => {
     qtyPpl = parseInt(e.target.value);
+    isInputValid(e.target);
     setDisplays();
 })
 
@@ -124,4 +149,6 @@ resetBtn.addEventListener('click', () => {
 
     tipDisplay.textContent = '$--.--';
     totalDisplay.textContent = '$--.--';
+
+    resetBtn.classList.add('disabled');
 })
